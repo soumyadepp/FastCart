@@ -1,0 +1,52 @@
+.orderDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height:100%;
+    box-shadow: 0px 0px 4px #ddd;
+    padding:20px;
+}
+
+.orderDetailsHeader {
+    display: flex;
+    align-items: center;
+    width:100%;
+    font-size:1.5rem;
+}
+
+.orderDetailsContent {
+    margin-block: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.orderDetailsList {
+    list-style: none;
+    width: 100%;
+}
+
+.orderDetailsList > li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.orderDetailsFooter {
+    padding:20px;
+    background: #ffffff;
+    color:#0d63fe;
+    text-align: left;
+    padding:12px;
+    margin-block-start: 5px;
+    width:100%;
+    font-weight: 700;
+}
+
+.orderDetailsFooter > tr {
+    max-width: 40vmin;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
