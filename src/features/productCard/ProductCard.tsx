@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { ProductData } from '../../app/data/products';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, Product, removeFromCart, selectCart } from '../cart/cartSlice'
@@ -19,18 +20,23 @@ export default function ProductCard(props: ProductCardPropType) {
         price,
         quantity: 1,
     };
-    const handleAddToCart = () => {
-        if(quantityFromCart){
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (quantityFromCart) {
             toast.success(`Added ${quantityFromCart + 1} ${name}s to cart.`);
         }
-        else{
+        else {
             toast.success(`Added ${name} to cart.`);
         }
         dispatch(addToCart({
             product: editableProduct
         }));
     }
-    const handleRemoveFromCart = () => {
+    const handleRemoveFromCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
         dispatch(removeFromCart({
             product: editableProduct
         }))
@@ -39,23 +45,25 @@ export default function ProductCard(props: ProductCardPropType) {
         setQuantityFromCart(cart.products.find(p => p.id === id)?.quantity);
     }, [cart])
     return (
-        <div className={styles.productCard}>
-            <div className={styles.productHeader}>
-                <img className={styles.image} src={imageURL} alt={name} />
-                <h3>{name}</h3>
-                <div className={styles.description}>
-                    <p>{description}</p>
-                    <p className={styles.price}>$ {price}</p>
+        <Link to={`/product/${id}`} style={{textDecoration:'none'}}>
+            <div className={styles.productCard}>
+                <div className={styles.productHeader}>
+                    <img className={styles.image} src={imageURL} alt={name} />
+                    <h3>{name}</h3>
+                    <div className={styles.description}>
+                        <p>{description}</p>
+                        <p className={styles.price}>$ {price}</p>
+                    </div>
+                </div>
+                <div className={styles.buttonDiv}>
+                    {(!quantityFromCart || quantityFromCart === 0) && <button className={styles.addToCartButton} onClick={handleAddToCart}>Add to Cart</button>}
+                    {quantityFromCart !== 0 && quantityFromCart !== undefined && <div className={styles.itemQuantity} onClick={e=>e.preventDefault()}>
+                        <button className={styles.actionButton} onClick={handleRemoveFromCart}>-</button>
+                        <input type="number" readOnly value={quantityFromCart} className={styles.quantityInput} />
+                        <button className={styles.actionButton} onClick={handleAddToCart}>+</button>
+                    </div>}
                 </div>
             </div>
-            <div className={styles.buttonDiv}>
-                {(!quantityFromCart || quantityFromCart === 0) && <button className={styles.addToCartButton} onClick={handleAddToCart}>Add to Cart</button>}
-                {quantityFromCart !== 0  && quantityFromCart !== undefined && <div className={styles.itemQuantity}>
-                    <button className={styles.actionButton} onClick={handleRemoveFromCart}>-</button>
-                    <input type="number" readOnly value={quantityFromCart} className={styles.quantityInput} />
-                    <button className={styles.actionButton} onClick={handleAddToCart}>+</button>
-                </div>}
-            </div>
-        </div>
+        </Link>
     )
 }

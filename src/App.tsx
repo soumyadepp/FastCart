@@ -1,9 +1,10 @@
 import './App.css';
-import ProductList from './features/productList/ProductList';
 import Navbar from './features/navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Cart from './features/cart/Cart';
 import { Toaster } from 'react-hot-toast';
+import ProductPage from './features/productPage/ProductPage';
+import Homepage from './features/homepage/Homepage';
 
 
 function App() {
@@ -11,9 +12,11 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
+        <Toaster/>
         <Routes>
-          <Route path="/" element={<ProductList />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/cart" element={<Cart/>}/>
+          <Route path="/product/:id" element={<ProductPage/>}/>
         </Routes>
       </div>
     </Router>

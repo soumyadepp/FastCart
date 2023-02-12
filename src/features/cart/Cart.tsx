@@ -15,7 +15,6 @@ export default function Cart() {
   if (cart.value > 0)
     return (
       <div className={styles.cartContainer}>
-        <Toaster/>
         <div className={styles.cartHeader}>
           <h2>Shopping Cart</h2>
           <h3>{itemsToBeShown} {itemsToBeShown === 1 ? 'item' : 'items'}</h3>

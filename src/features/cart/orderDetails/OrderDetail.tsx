@@ -12,7 +12,7 @@ export default function OrderDetail(props:OrderDetailPropType) {
     return (
     <div className={styles.orderDetailRow}>
         {productData && <div className={styles.productRow}>
-            <div className={styles.productName}><b>{productData?.name}</b> (Qty: {quantity})</div>
+            <div className={styles.productName}>{productData?.name} ({quantity})</div>
             <div className={styles.productTotalPrice}>$ {price*quantity}</div>
         </div>}
     </div>

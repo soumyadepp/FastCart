@@ -1,14 +1,13 @@
 .orderDetailRow {
     width: 100%;
     padding:8px;
-    margin-block: 5px;
+    margin-block: 4px;
     background: #ffffff;
-    font-size: 1rem;
 }
 
 .productName {
-    min-width: 400px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .productRow {
@@ -19,6 +18,14 @@
 }
 
 .productTotalPrice {
-    min-width: 250px;
+    min-width: 200px;
+    text-align: right;
     font-weight: 400;
+    font-size: 14px;
+}
+
+@media(max-width:800px) {
+    .productName {
+        font-size: 18px;
+    }
 }

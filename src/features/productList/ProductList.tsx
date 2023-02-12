@@ -1,29 +1,25 @@
-import { Toaster } from 'react-hot-toast';
-import { getExpandedMockData, mockProductData, ProductData } from '../../app/data/products';
+import { useEffect, useState } from 'react';
+import { mockProductData, ProductData } from '../../app/data/products';
 import ProductCard from '../productCard/ProductCard';
 import styles from './ProductList.module.css';
-import { FC, ReactNode, useEffect, useState } from 'react';
-import { AutoSizer as _AutoSizer, InfiniteLoader as _InfiniteLoader, List as _List, ListProps } from 'react-virtualized';
-
-const List = _List as unknown as FC<ListProps>;
-const AutoSizer = _AutoSizer as unknown as FC<ListProps>;
-const InfiniteLoader = _InfiniteLoader as unknown as FC<ListProps>;
-
-interface ProductListProps {
-  fetchData(start: number, limit: number, conditions: string): Promise<any[]>;
-  totalItems: number;
-  renderCell(item: any): ReactNode;
-  noOfItemsInRow: number;
-  fetchCondition: string;
-}
 
 export default function ProductList() {
+  const [productListData, setProductListData] = useState<ProductData[]>(mockProductData);
+  const [searchInput, setSearchInput] = useState<string>("");
+  
+  useEffect(() => {
+    setProductListData(mockProductData.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase())));
+  },[searchInput])
   return (
-    <div className={styles.productList}>
-      <Toaster/>
-      {mockProductData.map((product: ProductData) => {
-        return <ProductCard key={product.id} product={product} />
-      })}
+    <div className={styles.productListWrapper}>
+      <div className={styles.productSearchFilter}>
+        <input className={styles.searchBarInput} value={searchInput} onChange={e=>setSearchInput(e.target.value)} type="search" placeholder="Search" />
+      </div>
+      <div className={styles.productList}>
+        {productListData.map((product: ProductData) => {
+          return <ProductCard key={product.id} product={product} />
+        })}
+      </div>
     </div>
   )
 }
