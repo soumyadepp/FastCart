@@ -1,10 +1,9 @@
-import React from 'react'
 import { useAppSelector } from '../../app/hooks'
 import { Product, selectCart } from './cartSlice'
 import styles from './Cart.module.css';
 import CartCard from './cartCard/CartCard';
-import { Toaster } from 'react-hot-toast';
 import OrderDetails from './orderDetails/OrderDetails';
+import emptyCartImage from '../../assets/empty_cart.svg';
 export default function Cart() {
   const cart = useAppSelector(selectCart);
   const products: Product[] = cart.products;
@@ -25,6 +24,7 @@ export default function Cart() {
               {products && products.map((p: Product) => {
                 if (p.quantity > 0)
                   return <CartCard product={p} key={p.id} />
+                else return <></>
               })}
             </div>
           </div>
@@ -37,8 +37,9 @@ export default function Cart() {
   else
     return (
       <div className={styles.emptyCart}>
-        <Toaster/>
+        <img src={emptyCartImage} className={styles.emptyCartImage} alt="Empty Cart"/>
         <h2>Your Cart is Empty!</h2>
+
       </div>
     );
 }

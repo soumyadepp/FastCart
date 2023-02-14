@@ -19,22 +19,23 @@ export default function OrderDetails() {
                             return (
                                 <li key={p.id}><OrderDetail product={p} /></li>
                             )
+                        else return <></>
                     })}
                 </ul>
             </div>
             <div className={styles.orderDetailsFooter}>
-                    <div className={styles.orderDetailsContent}>
-                        <td>
-                            Total:
-                        </td>
-                        <td>
-                            $ {totalValue}
-                        </td>
-                    </div>
-                    <div className={styles.orderDetailsButton}>
-                        <button type="button" className={styles.checkoutButton}>Checkout</button>
-                    </div>
+                <div className={styles.orderDetailsContent}>
+                    <td>
+                        Total:
+                    </td>
+                    <td>
+                        $ {totalValue}
+                    </td>
                 </div>
+                <div className={styles.orderDetailsButton}>
+                    <button type="button" className={styles.checkoutButton}>Checkout</button>
+                </div>
+            </div>
         </div>
     )
 }

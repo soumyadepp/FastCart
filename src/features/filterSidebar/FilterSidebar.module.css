@@ -1,0 +1,41 @@
+.filterSidebarBody {
+    padding:12px;
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+.filterSidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding:12px;
+    margin-block-end: 10px;
+}
+
+.filterSidebarHeader > h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.filterSidebarHeader > img {
+    height:3rem;
+    width: auto;
+}
+
+.filterSidebarWrapper {
+    height:calc(100vh - 65px);
+    overflow-y: hidden;
+    background:#fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:15%;
+    border-right: 1px solid #ddd;
+}
+
+@media(max-width:1000px) {
+    .filterSidebarWrapper {
+        display: none;
+    }
+}

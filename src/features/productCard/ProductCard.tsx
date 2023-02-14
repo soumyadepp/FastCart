@@ -1,68 +1,46 @@
 import { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import { ProductData } from '../../app/data/products';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addToCart, Product, removeFromCart, selectCart } from '../cart/cartSlice'
+import { ProductData } from '../../app/types/types';
+import { useAppSelector } from '../../app/hooks';
+import { Product, selectCart } from '../cart/cartSlice'
+import DynamicButton from '../common/dynamicButton/DynamicButton';
+import RatingChip from '../common/ratingChip/RatingChip';
 import styles from './ProductCard.module.css';
+import { Rating } from 'react-simple-star-rating';
+
 type ProductCardPropType = {
     product: ProductData;
 }
 
 export default function ProductCard(props: ProductCardPropType) {
-    const { id, name, description, price, imageURL } = props.product;
+    const { id, name, description, price, imageURL, rating } = props.product;
     const cart = useAppSelector(selectCart);
     const [quantityFromCart, setQuantityFromCart] =
         useState<number | undefined>(cart.products.find(p => p.id === id)?.quantity);
-    const dispatch = useAppDispatch();
     const editableProduct: Product = {
         id,
         price,
         quantity: 1,
     };
-
-    const handleAddToCart = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (quantityFromCart) {
-            toast.success(`Added ${quantityFromCart + 1} ${name}s to cart.`);
-        }
-        else {
-            toast.success(`Added ${name} to cart.`);
-        }
-        dispatch(addToCart({
-            product: editableProduct
-        }));
-    }
-    const handleRemoveFromCart = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dispatch(removeFromCart({
-            product: editableProduct
-        }))
+    const renderCurrency = (amount:number) => {
+        return `$ ${amount.toFixed(2)}`
     }
     useEffect(() => {
         setQuantityFromCart(cart.products.find(p => p.id === id)?.quantity);
-    }, [cart])
+    }, [cart, id])
     return (
-        <Link to={`/product/${id}`} style={{textDecoration:'none'}}>
+        <Link to={`/product/${id}`} state={{ product: props.product, quantityFromCart: quantityFromCart }} style={{ textDecoration: 'none' }}>
             <div className={styles.productCard}>
                 <div className={styles.productHeader}>
                     <img className={styles.image} src={imageURL} alt={name} />
                     <h3>{name}</h3>
+                    <p>{description}</p>
                     <div className={styles.description}>
-                        <p>{description}</p>
-                        <p className={styles.price}>$ {price}</p>
+                        <p className={styles.price}>{renderCurrency(price)}</p>
+                        <Rating fillColor='#0d6efd' size={22} initialValue={rating} allowFraction readonly/>
                     </div>
                 </div>
-                <div className={styles.buttonDiv}>
-                    {(!quantityFromCart || quantityFromCart === 0) && <button className={styles.addToCartButton} onClick={handleAddToCart}>Add to Cart</button>}
-                    {quantityFromCart !== 0 && quantityFromCart !== undefined && <div className={styles.itemQuantity} onClick={e=>e.preventDefault()}>
-                        <button className={styles.actionButton} onClick={handleRemoveFromCart}>-</button>
-                        <input type="number" readOnly value={quantityFromCart} className={styles.quantityInput} />
-                        <button className={styles.actionButton} onClick={handleAddToCart}>+</button>
-                    </div>}
-                </div>
+                <DynamicButton quantityFromCart={quantityFromCart} name={name} editableProduct={editableProduct} />
             </div>
         </Link>
     )

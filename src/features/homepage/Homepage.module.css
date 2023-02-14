@@ -1,20 +1,18 @@
 .homepageWrapper {
-    height:100%;
-    margin:0;
-    padding:0;
+    display: flex;
+    align-items: flex-start;
 }
+.homepageBody {
+    height:calc(100vh - 75px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 
 .homepageFilters {
     display: flex;
     align-items: center;
     padding-inline:20px;
-    margin:10px;
 }
 
-.searchbarInput {
-    padding:8px;
-    border: 0.5px solid #ddd;
-    outline:none;
-    font-size: 1rem;
-    border-radius:5px;
-}

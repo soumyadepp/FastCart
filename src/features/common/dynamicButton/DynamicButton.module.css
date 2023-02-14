@@ -1,0 +1,57 @@
+.actionButton {
+    padding: 8px;
+    background: #0d6efd;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 50%;
+}
+
+.actionButton:hover {
+    background: #1f5ad0;
+    transition: all 0.2s ease-in-out;
+}
+
+.addToCartButton {
+    padding: 8px;
+    background: #0d6efd;
+    color: #efefef;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.addToCartButton:hover {
+    background: #1f5ad0;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.buttonDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block-start: 10px;
+}
+.itemQuantity {
+    display: flex;
+    align-items: center;
+}
+.quantityInput {
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    max-width: 15rem;
+    color: #1d1d1d;
+    margin-block: 6px;
+}
+
+

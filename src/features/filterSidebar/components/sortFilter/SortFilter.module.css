@@ -1,0 +1,17 @@
+.sortFilterWrapper {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+.sortFilterHeader {
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sortHeader > h3 {
+    font-size: 1rem;
+    font-weight: 400;
+}

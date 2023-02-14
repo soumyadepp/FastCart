@@ -1,38 +1,61 @@
-import { useParams } from 'react-router-dom';
-import { mockProductData, ProductData } from '../../app/data/products';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ProductData } from '../../app/types/types';
+import { useAppSelector } from '../../app/hooks';
+import { Product, selectCart } from '../cart/cartSlice';
+import { Rating } from 'react-simple-star-rating';
+import DynamicButton from '../common/dynamicButton/DynamicButton';
 import styles from './ProductPage.module.css';
+import RatingChip from '../common/ratingChip/RatingChip';
+import Button from '../common/button/Button';
 
 
 export default function ProductPage() {
-  const {id} = useParams();
-  const product = mockProductData.find(p => p.id === parseInt(id as string) as unknown as number) as ProductData;
-  console.log(product);
-  const {id:pid,name,description,details,imageURL,price} = product;
+  const cart = useAppSelector(selectCart);
+  const location = useLocation();
+  const { id, name, description, imageURL, details, price, rating } = location.state.product as ProductData;
+  const [quantityFromCart, setQuantityFromCart] = useState<number | undefined>(location.state.quantityFromCart);
+  const editableProduct: Product = {
+    id,
+    price,
+    quantity: 1
+  }
+  useEffect(() => {
+    setQuantityFromCart(cart.products.find(p => p.id === id)?.quantity);
+  }, [cart, id])
   return (
-    <div className={styles.productPageWrapper} key={pid}>
-        <div className={styles.productPageLeft}>
-            <img src={imageURL} alt={name} className={styles.productImage}/>
-            <div className={styles.productPageOptions}>
-              <button type="button" className={styles.addToCartButton}>Add to Cart</button>
-              <button type="button" className={styles.buyNowButton}>Buy Now</button>
-            </div>
+    <div className={styles.productPageWrapper} key={id}>
+      <div className={styles.productPageLeft}>
+        <img src={imageURL} alt={name} className={styles.productImage} />
+        <div className={styles.productPageOptions}>
+          <div className={styles.buttonWrapper}>
+            <DynamicButton fullRoundedBase quantityFromCart={quantityFromCart} editableProduct={editableProduct} name={name} />
+          </div>
+          <div className={styles.buttonWrapper}>
+            <Button text="Buy Now" full={true} outlined={true} handleClick={() => console.log('hello')} />
+          </div>
         </div>
-        <div className={styles.productPageRight}>
-            <div className={styles.productPageHeader}>
-                <h2>{name}</h2>
-            </div>
-            <div className={styles.productPageDescription}>
-              <div className={styles.productPageDescriptionUpper}>
-                <p>{description}</p>
-              </div>
-              <div className={styles.productPageDescriptionLower}>
-                <p>{details}</p>
-              </div>
-              <div className={styles.productPrice}>
-                <h4>${price}</h4>
-              </div>
-            </div>
+      </div>
+      <div className={styles.productPageRight}>
+        <div className={styles.productPageHeader}>
+          <h2>{name}</h2>
+          <div className={styles.productPageDescriptionUpper}>
+            <p>{description}</p>
+          </div>
+          <div className={styles.ratingLabel}>
+            <Rating style={{ marginInlineEnd: '12px' }} size={24} readonly allowFraction fillColor='#0d63fd' initialValue={rating} />
+            <RatingChip rating={rating} />
+          </div>
+          <div className={styles.productPrice}>
+            <h4>${price}</h4>
+          </div>
         </div>
+        <div className={styles.productPageDescription}>
+          <div className={styles.productPageDescriptionLower}>
+            <p>{details}</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

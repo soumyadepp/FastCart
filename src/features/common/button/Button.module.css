@@ -1,0 +1,41 @@
+.commonButton {
+    padding: 12px;
+    background: #0d6efd;
+    color: #efefef;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    width: 90%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.full {
+    width:100%;
+}
+
+.outlined {
+    padding:12px;
+    background:#fff;
+    color:#0d6efd;
+    border:1px solid #0d6efd;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.outlined:hover {
+    background: #1f5ad0;
+    color:#fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.commonButton:hover {
+    background: #1f5ad0;
+    transition: all 0.2s ease-in-out;
+}
+
+.rounded {
+    border-radius: 5px;
+}

@@ -1,0 +1,35 @@
+.red {
+    padding: 8px;
+    color: #fff;
+    margin: 8px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    background: #d10023;
+}
+
+.lightGreen {
+    padding: 8px;
+    color: #fff;
+    margin: 8px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    background: rgb(22, 114, 13);
+}
+
+.darkGreen {
+    padding: 8px;
+    color: #fff;
+    margin: 8px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    background: rgb(13, 68, 8);
+}
+
+.none {
+    background:#9f9f9f;
+    border-radius: 8px;
+    margin:8px;
+    font-size: 0.75rem;
+    padding:8px;
+    color:#fff;
+}

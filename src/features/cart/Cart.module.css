@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 20px;
 }
 
 .cartBodyRight {
@@ -71,6 +72,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.emptyCartImage {
+    margin-block-end: 30px;
+    height:15rem;
+    width:auto;
 }
 
 @media(max-width:800px) {

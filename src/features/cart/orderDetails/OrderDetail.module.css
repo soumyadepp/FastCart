@@ -6,8 +6,8 @@
 }
 
 .productName {
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .productRow {
@@ -21,11 +21,12 @@
     min-width: 200px;
     text-align: right;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1rem;
+    color:#4f4f4f;
 }
 
 @media(max-width:800px) {
     .productName {
-        font-size: 18px;
+        font-size: 1rem;
     }
 }
