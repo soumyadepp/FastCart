@@ -13,7 +13,7 @@
 }
 
 .productList {
-    max-height: calc(100vh - 150px);
+    height: calc(100vh - 150px);
     overflow-y: scroll;
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(350px, 0fr) );

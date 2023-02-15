@@ -27,6 +27,9 @@
 
 @media(max-width:800px) {
     .productName {
-        font-size: 1rem;
+        font-size: 0.85rem;
+    }
+    .productTotalPrice {
+        font-size: 0.85rem;
     }
 }
