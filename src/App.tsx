@@ -27,7 +27,7 @@ function App() {
   );
 }
 
-export default function ToggleColorMode() {
+export default function AppWrapper() {
   const [mode,setMode] = useState<'light' | 'dark'>('light');
   const colorMode = useMemo(
     ()=>({

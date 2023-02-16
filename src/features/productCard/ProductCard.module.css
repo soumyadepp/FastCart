@@ -132,7 +132,7 @@
 
 @media(max-width:800px) {
     .image {
-        width: 80%;
+        width: 20rem;
         height: auto;
     }
     .ratingDiv{
@@ -143,8 +143,8 @@
 
 @media(max-width:300px) {
     .image {
-        max-width: 35vmin;
-        height:auto;
+        height:8rem;
+        width: auto;
     }
     .productCard {
         width:100%;

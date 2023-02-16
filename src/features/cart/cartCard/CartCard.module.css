@@ -16,7 +16,7 @@
 }
 
 .productImage {
-    width: 20vmin;
+    width: 18vmin;
     margin:8px;
 }
 .cartCardProductActions {
@@ -43,7 +43,7 @@
 }
 
 .description {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color:#6f6f6f;
 }
 
@@ -78,12 +78,32 @@
     padding:8px;
     max-width: 10rem;
     margin-inline-start: 5px;
+    text-align: center;
     font-size: 15px;
 }
 
 .priceRatingWrapper {
     display: flex;
     flex-direction: column;
+}
+
+.seeMoreButton {
+    background: #0d6efd;
+    color:#fff;
+    padding:8px;
+    font-weight: 600;
+    margin-block: 8px;
+    outline: none;
+    border:none;
+    width:auto;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seeMoreButton:hover{
+    background-color: #1f5ad0;
+    transition: all 0.2s ease-in-out;
 }
 
 
@@ -95,7 +115,7 @@
         margin: 10px;
     }
     .productImage {
-        min-height:30vmin;
+        width:25vmin;
     }
     .priceRatingWrapper {
         margin-block: 8px;
@@ -112,10 +132,10 @@
         margin-inline:10px;
     }
     .productImage {
-        width: 65vmin;
+        width:45vmin;
     }
     .cartCardDescription {
-        align-items: center;
+        align-items: flex-start;
     }
     .cartCardDescription > h3 {
         font-size: 22px;

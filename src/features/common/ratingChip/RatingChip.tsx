@@ -2,19 +2,17 @@ import styles from './RatingChip.module.css';
 
 
 type RatingChipPropType = {
-    rating: number | undefined;
+    rating: number;
 }
 
 export default function RatingChip(props: RatingChipPropType) {
 
     const { rating: productRating } = props;
     const renderRating = () => {
-        if(productRating)
-            return (productRating).toPrecision(2);
-        return "-";
+        return productRating > 0 ? (productRating).toPrecision(2) : '-';
     }
     const getMappedClassFromRating = (): string => {
-        if (productRating === undefined) return styles.none;
+        if (productRating === -1) return styles.none;
         if (productRating >= 0 && productRating < 3) return styles.red;
         if (productRating >= 3 && productRating < 4) return styles.darkGreen;
         return styles.lightGreen;

@@ -5,6 +5,7 @@ import { mockProductData } from '../../../app/data/products';
 import { ProductData } from '../../../app/types/types';
 import { toast } from 'react-hot-toast';
 import { Rating } from 'react-simple-star-rating';
+import { Link } from 'react-router-dom';
 
 type CartCardPropType = {
     product: Product;
@@ -37,7 +38,7 @@ export default function CartCard(props: CartCardPropType) {
     };
 
     return (
-        <div className={styles.cartCardWrapper}>
+        <div className={styles.cartCardWrapper} key={id}>
             <div className={styles.cartCardImage}>
                 <img src={imageURL} className={styles.productImage} alt={name} />
             </div>
@@ -48,6 +49,9 @@ export default function CartCard(props: CartCardPropType) {
                     <Rating initialValue={rating} readonly fillColor='#0d6efd' size={20}/>
                 </div>
                 <p className={styles.description}>{description}</p>
+                <Link style={{textDecoration:'none'}} to ={`/product/${id}`} state={{product:mockProductData.find(p => p.id === id)}}>
+                    <button className={styles.seeMoreButton}>See More</button>
+                </Link>
             </div>
             <div className={styles.cartCardProductActions}>
                 <button className={styles.editButton} onClick={handleRemoveFromCart}>-</button>

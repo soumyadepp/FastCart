@@ -20,21 +20,19 @@ export default function ProductPage() {
     price,
     quantity: 1
   }
+
+  const renderPrice = () => {
+    return <h4>$ {price.toFixed(2)}</h4>
+  }
+
   useEffect(() => {
     setQuantityFromCart(cart.products.find(p => p.id === id)?.quantity);
-  }, [cart, id])
+  }, [cart, id]);
+
   return (
     <div className={styles.productPageWrapper} key={id}>
       <div className={styles.productPageLeft}>
         <img src={imageURL} alt={name} className={styles.productImage} />
-        <div className={styles.productPageOptions}>
-          <div className={styles.buttonWrapper}>
-            <DynamicButton fullRoundedBase quantityFromCart={quantityFromCart} editableProduct={editableProduct} name={name} />
-          </div>
-          <div className={styles.buttonWrapper}>
-            <Button text="Buy Now" full={true} outlined={true} handleClick={() => console.log('hello')} />
-          </div>
-        </div>
       </div>
       <div className={styles.productPageRight}>
         <div className={styles.productPageHeader}>
@@ -43,16 +41,25 @@ export default function ProductPage() {
             <p>{description}</p>
           </div>
           <div className={styles.ratingLabel}>
-            <Rating style={{ marginInlineEnd: '12px' }} size={24} readonly allowFraction fillColor='#0d63fd' initialValue={rating} />
+            <Rating style={{ marginInlineEnd: '12px' }} size={24}
+              readonly allowFraction fillColor='#0d63fd' initialValue={rating} />
             <RatingChip rating={rating} />
           </div>
           <div className={styles.productPrice}>
-            <h4>${price}</h4>
+            {renderPrice()}
           </div>
         </div>
         <div className={styles.productPageDescription}>
           <div className={styles.productPageDescriptionLower}>
             <p>{details}</p>
+          </div>
+          <div className={styles.buttonWrapper}>
+            <DynamicButton isQuantity={quantityFromCart && quantityFromCart > 0}
+              fullRoundedBase quantityFromCart={quantityFromCart}
+              editableProduct={editableProduct} name={name} />
+          </div>
+          <div className={styles.buttonWrapper}>
+            <Button text="Buy Now" full={true} outlined={true} handleClick={() => console.log('hello')} />
           </div>
         </div>
       </div>

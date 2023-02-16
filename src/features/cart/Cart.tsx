@@ -21,9 +21,9 @@ export default function Cart() {
         <div className={styles.cartBody}>
           <div className={styles.cartBodyLeft}>
             <div className={styles.cartWrapper}>
-              {products && products.map((p: Product) => {
+              {products && products.map((p: Product,index) => {
                 if (p.quantity > 0)
-                  return <CartCard product={p} key={p.id} />
+                  return <CartCard product={p} key={index} />
                 else return <></>
               })}
             </div>

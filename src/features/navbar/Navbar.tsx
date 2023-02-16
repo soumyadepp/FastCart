@@ -3,8 +3,6 @@ import { useAppSelector } from '../../app/hooks';
 import { selectCart } from '../cart/cartSlice';
 import styles from './Navbar.module.css';
 import cartImage from '../../assets/cart.png';
-import { Switch } from '@mui/material';
-
 
 const linkStyles = {
     textDecoration:'none',
@@ -19,7 +17,6 @@ export default function Navbar() {
             <Link style={linkStyles} to ="/"><h2 className={styles.logo}>FastCart</h2></Link>
         </div>
         <div className={styles.navbarRight}>
-            <Switch color='error'/>
             <div className={styles.cartIcon}>
                 <Link to="/cart">
                     <img className={styles.iconButton} src={cartImage} alt="cart"/>

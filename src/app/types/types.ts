@@ -10,7 +10,17 @@ export enum CategoryEnum {
     miscallaneous = "MISCALLANEOUS",
     watches = "WATCHES",
     television = "TELEVISION"
-}
+};
+
+export enum ClothingSizesEnum {
+    extraSmall="XS",
+    small="S",
+    medium="M",
+    large="L",
+    extraLarge="XL",
+    extraExtraLarge="XXL",
+    plusSize="MXL"
+};
 
 export interface ProductData {
     id: number;
@@ -21,7 +31,21 @@ export interface ProductData {
     price: number;
     quantity: number;
     details?: string;
-    rating?: number;
-    availableSizes?:string[];
+    rating: number;
+    availableSizes?:any[];
     colors?:string[];
+    variants?: any[];
 };
+
+export interface FashionProduct extends ProductData{
+    id:number;
+    description: string;
+    category: CategoryEnum.fashion;
+    name:string;
+    price:number;
+    quantity:number;
+    details:string;
+    rating:number;
+    availableSizes?:ClothingSizesEnum[];
+}
+

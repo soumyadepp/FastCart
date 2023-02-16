@@ -3,7 +3,7 @@
     align-items: flex-start;
 }
 .homepageBody {
-    height:calc(100vh - 75px);
+    height:calc(100vh - 70px);
     display: flex;
     align-items: flex-start;
     justify-content: center;

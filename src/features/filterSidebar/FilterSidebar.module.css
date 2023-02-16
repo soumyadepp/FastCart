@@ -14,7 +14,7 @@
 }
 
 .filterSidebarHeader > h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 400;
 }
 
@@ -32,6 +32,94 @@
     align-items: flex-start;
     width:15%;
     border-right: 1px solid #ddd;
+}
+
+.resetFilterButton {
+    padding:8px;
+    margin-block:8px;
+    background:#d10023;
+    border:none;
+    outline: none;
+    color:#fff;
+    width: 100%;
+    border-radius: 15px;
+    font-size: 0.75rem;
+}
+
+.priceSortFilterBody {
+    margin-block-start: 10px;
+}
+
+.sortFilterWrapper {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+.sortFilterHeader {
+    width:100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.sortFilterHeader > h3 {
+    font-size: 1rem;
+    color:#0d6efd;
+    font-weight: 600;
+    margin-block-end: 10px;
+}
+
+.sortHeader {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sortHeader > h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.sortFilterBody {
+    display: flex;
+    margin-block:8px;
+    flex-direction: column;
+}
+
+.sortActionButton {
+    padding:8px;
+    font-size: 1rem;
+    background:#fff;
+    border:none;
+    outline:none;
+    box-shadow: 0 0 8px #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-block-end: 8px;
+    font-weight: 500;
+}
+
+.disabledButton {
+    padding:8px;
+    font-size: 0.75rem;
+    background:#9f9f9f;
+    border:none;
+    outline:none;
+    box-shadow: 0 0 8px #ddd;
+    border-radius: 15px;
+    color:#fff;
+    margin-block: 8px;
+    font-weight: 500;
+}
+
+.disabledButton:hover{
+    cursor: not-allowed;
+}
+
+.sortActionButton:hover {
+    filter:drop-shadow(0 0 4px #ddd);
 }
 
 @media(max-width:1000px) {

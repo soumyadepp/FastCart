@@ -19,14 +19,14 @@
     color:#0d63fe;
 }
 
-.orderDetailsButton {
+.orderDetailsButton > tr{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.orderDetailsButton > button {
+.checkoutButton {
     width:100%;
     outline:none;
     border:none;
@@ -38,17 +38,18 @@
     padding:8px;
 }
 
-.orderDetailsButton >button:hover {
+.checkoutButton:hover {
     background: #1f5ad0;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
 .orderDetailsContent {
-    max-height: 100%;
+    width:100%;
     margin-block: 12px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .orderDetailsList {
